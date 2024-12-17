@@ -1,50 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div class="row">
-    <div class="col-12">
-        <h1 class="display-4">ClubRight Screening Assessment</h1>
-        <p>You have 90 minutes for this assessment. Please say how long and how you found it in "How did you find this assessment?".  (optional: this is your opportunity to show some flair!)</p>
-    </div>
 
-    <div class="col-4 text-start pe-5">
-        <ol>
-            <li class="mb-3">
-                While debugging, any changes to the razor page will need to the whole application to be re-built/re-run for changes to take effect. Change the project file so that you can make UI changes without restarting.
-            </li>
-            <li class="mb-3">
-                Create a button on the page that increments a digit on the page (this should be a server side call, not Javascript (apart from any inbuilt ajax functions))
-            </li>
-            <li class="mb-3">
-                Create a second page which can be accessed from the nav menu, the contents of the page should be a header that says "Number of clicks" with a paragraph that says "The button was pressed X times" (replacing X for how many times the button was pressed in question 2)
-            </li>
-            <li class="mb-3">
-                Create a button that takes a string as an input
-                <ul>
-                    <li>Reverse this string and output it on the page (eg "The quick brown fox" will output as "xof nworb kciuq ehT")</li>
-                    <li>Reverse the words from the input string and output it on to the page (eg "The quick brown fox" will output as "fox brown quick The")</li>
-                </ul>
-            </li>
-        </ol>
-    </div>
+<h1>ClubRight Screening Assessment</h1>
+<h3>Add your solution to question 2 here</h3>
 
-    <div class="col">
-        <div class="mb-5">
-            <h3>Add your solution to question 2 here</h3>
-
-            <p><button>Increment number by 1</button></p>
-            <p><span>1</span></p>
-            <hr/>
-        </div>
-
-        <div class="mb-5">
-            <h3>Add your solution to question 3 here</h3>
-            <hr/>
-        </div>
-
-        <div class="mb-5">
-            <h4>How did you find this assessment?</h4>
-            @* Write here *@
-        </div>
-    </div>
-</div>
+<form method="post" asp-action="Increment">
+    <button type="submit" class="btn btn-primary">Increment number by 1</button>
+</form>
+<p>Count: <span>@ViewData["Count"]</span></p>

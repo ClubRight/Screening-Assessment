@@ -1,0 +1,21 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Reverse String";
+}
+
+<h1>Reverse a String</h1>
+<form method="post" asp-action="ReversePage">
+    <label>Enter a string:</label>
+    <input type="text" name="inputString" class="form-control mb-2" required />
+    <button type="submit" class="btn btn-success">Reverse String</button>
+</form>
+
+@if (ViewData["Original"] != null)
+{
+    <div class="mt-3">
+        <p><strong>Original String:</strong> @ViewData["Original"]</p>
+        <p><strong>Reversed String:</strong> @ViewData["ReversedString"]</p>
+        <p><strong>Reversed Words:</strong> @ViewData["ReversedWords"]</p>
+    </div>
+}
