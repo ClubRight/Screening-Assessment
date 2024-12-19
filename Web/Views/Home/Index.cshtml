@@ -1,11 +1,65 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<div class="row">
+    <div class="col-12">
+        <h1 class="display-4">ClubRight Screening Assessment</h1>
+        <p>You have 90 minutes for this assessment. Please say how long and how you found it in "How did you find this assessment?". (optional: this is your opportunity to show some flair!)</p>
+    </div>
 
-<h1>ClubRight Screening Assessment</h1>
-<h3>Add your solution to question 2 here</h3>
+    <div class="col-4 text-start pe-5">
+        <ol>
+            <li class="mb-3">
+                While debugging, any changes to the razor page will need the whole application to be re-built/re-run for changes to take effect.
+            </li>
+            <li class="mb-3">
+                Create a button on the page that increments a digit on the page (this should be a server-side call, not Javascript (apart from any inbuilt ajax functions)).
+            </li>
+            <li class="mb-3">
+                Create a second page which can be accessed from the nav menu. The contents of the page should be a header that says "Number of clicks" with a paragraph that says "The button was pressed X times" (replacing X for how many times the button was pressed in question 2).
+            </li>
+            <li class="mb-3">
+                Create a button that takes a string as input:
+                <ul>
+                    <li>Reverse this string and output it on the page (eg "The quick brown fox" will output as "xof nworb kciuq ehT").</li>
+                    <li>Reverse the words from the input string and output it on to the page (eg "The quick brown fox" will output as "fox brown quick The").</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
 
-<form method="post" asp-action="Increment">
-    <button type="submit" class="btn btn-primary">Increment number by 1</button>
-</form>
-<p>Count: <span>@ViewData["Count"]</span></p>
+    <div class="col">
+        <div class="mb-5">
+            <h3>Add your solution to question 2 here</h3>
+            <form method="post" asp-action="Increment">
+                <button type="submit" class="btn btn-primary">Increment number by 1</button>
+            </form>
+            <p>Count: <span>@ViewData["Count"]</span></p>
+            <hr />
+        </div>
+
+        <div class="mb-5">
+            <h3>Add your solution to question 3 here</h3>
+            <a asp-action="ReversePage" class="btn btn-primary">Go to Reverse Page</a>
+            <hr />
+        </div>
+
+        <div class="mb-5">
+            <h4>How did you find this assessment?</h4>
+            <form method="post" asp-action="SubmitFeedback">
+                <div class="mb-3">
+                    <label for="feedback" class="form-label"></label>
+                    <textarea class="form-control" id="feedback" name="feedback" rows="3" placeholder="Write your feedback here..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+            </form>
+
+            @if (!string.IsNullOrEmpty(ViewData["Feedback"] as string))
+            {
+                <div class="mt-3">
+                    <p><strong>Your Feedback:</strong> @ViewData["Feedback"]</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

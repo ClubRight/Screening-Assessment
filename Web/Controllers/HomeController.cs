@@ -8,6 +8,7 @@ namespace Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private static int _clickCount = 0;
+        private static string _assessmentFeedback = string.Empty;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -22,6 +23,24 @@ namespace Web.Controllers
             return View("Index");
         }
 
+        [HttpPost]
+        public IActionResult SubmitFeedback(string feedback)
+        {
+            if (!string.IsNullOrEmpty(feedback))
+            {
+                _assessmentFeedback = feedback;
+            }
+            ViewData["Feedback"] = _assessmentFeedback;
+            return View("Index");        }
+
+
+        public IActionResult Index()
+        {
+            ViewData["Feedback"] = _assessmentFeedback;
+            ViewData["Count"] = _clickCount;
+            return View();
+        }
+
         public IActionResult ClicksPage()
         {
             ViewData["ClickCount"] = _clickCount;
@@ -33,12 +52,7 @@ namespace Web.Controllers
             return View();
         }
 
-        public IActionResult Index()
-        {
-            ViewData["Count"] = _clickCount;
-            return View();
-        }
-
+    
         public IActionResult Privacy()
         {
             return View();
